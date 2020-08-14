@@ -20,7 +20,7 @@ tools-box
 │       │   hello-world.sh
 │       │   README.md
 |
-|	└───example
+|   └───example
 │       │   example.sh
 │       │   README.md
 │       │   ...
