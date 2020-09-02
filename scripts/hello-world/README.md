@@ -50,7 +50,7 @@ Hello World
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/DNXLabs/tools-box/tags). 
+1.0.0
 
 ## Authors
 
