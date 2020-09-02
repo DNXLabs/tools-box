@@ -1,14 +1,12 @@
 # S3 Content Migration
 
-This script will help you to print a message on the console of your terminal.
+This script will help you copy all files from multiple buckets using a list of bucket names.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 |Language|Environment|Purpose
 |--|--|--|
-|Bash Script|Linux|Show a hello world message on console
+|Bash Script|Linux|Copy all files from multiple buckets to multiple buckets
 
 ### Prerequisites
 
@@ -26,22 +24,22 @@ To have your script running, follow these steps:
 Give permission to your script:
 
 ```
-chmod +x hello-world.sh
+chmod +x sync.sh
 ```
 
 Run the script:
 
 ```
-./hello-world.sh
+./sync.sh list-of-buckets.csv
 ```
 
-Demo:
+### Recommendation
 
-```
-$ ➜ ~ ./hello-wrold.sh
-Hello World
-```
-
+1. Spin up an EC2 instance
+2. Create an instance role and attach it to the EC2 Instance
+3. Update the policy of source buckets with the new instance role
+4. Install screen
+5. Run this script on screen
 
 ## Built With
 
@@ -50,11 +48,11 @@ Hello World
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/DNXLabs/tools-box/tags). 
+1.0.0
 
 ## Authors
 
-* **Bruno da Silva Valenga** - *Initial work* - [brunodasilvalenga](https://github.com/brunodasilvalenga)
+* **Luiz Rocha** - *Initial work* - [lzrocha](https://github.com/lzrocha)
 
 ## License
 
