@@ -1,0 +1,7 @@
+{
+    "MyVariables": [
+        {
+            "Value1": "${MY_VARIABLE}"
+        }
+    ]
+}
