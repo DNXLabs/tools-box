@@ -14,9 +14,10 @@ services:
   aws:
     image: dnxsolutions/aws:2.0.22-dnx1
     entrypoint: "/bin/bash -c"
+    working_dir: /work
     env_file:
       - .env
       - .env.auth
       - .env.assume
     volumes:
-      - ..:/work
+      - .:/work

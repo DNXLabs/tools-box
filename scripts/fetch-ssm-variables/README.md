@@ -26,11 +26,17 @@ export GOOGLE_IDP_ID=<my-google-idp-id>
 export GOOGLE_SP_ID=<my-google-sp-id>
 ```
 
+And authenticate to collect your temporary token using the command:
+
+```
+make .env.auth
+```
+
 2. Export the following environment variables for the desired AWS account where we must collect the SSM parameters:
 
-- AWS_ACCOUNT_ID = AWS Account ID
-- AWS_ROLE       = AWS IAM role
-- AWS_ENV        = AWS Environment
+- `AWS_ACCOUNT_ID` = AWS Account ID
+- `AWS_ROLE`       = AWS IAM role
+- `AWS_ENV`        = AWS Environment
 
 ```
 export AWS_ACCOUNT_ID=<my-account-id> AWS_ROLE=<my-iam-role> AWS_ENV=<my-environment>
@@ -62,14 +68,7 @@ And configure your template file with the last part of the variable based on the
 
 The scripts will collect the value from the SSM parameter and replace in the template file automatically.
 
-5. Run the scripts (in order):
-
-```
-./ssm-fetch.sh
-./ssm-envsubst.sh
-```
-
-or the command:
+5. To collect the variables and replace them in the template file just run the command:
 
 ```
 replace-ssm-variables

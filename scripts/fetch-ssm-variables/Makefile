@@ -3,7 +3,7 @@ export GOOGLE_SP_ID=
 
 ASSUME_REQUIRED?=.env.assume
 
-export SSM_PATH?=/app/$(AWS_ENV)/my-app
+export SSM_PATH?=<YOUR_SSM_PATH_HERE>
 
 # Check for specific environment variables
 env-%:
@@ -33,8 +33,8 @@ env-%:
 replace-ssm-variables: $(ASSUME_REQUIRED) env-AWS_ENV
 	docker-compose -f docker-compose.yml \
 		run --rm aws \
-			"ssm-fetch.sh $(SSM_PATH) && \
-			 ssm-envsubst.sh"
+			"./ssm-fetch.sh $(SSM_PATH) && \
+			 ./ssm-envsubst.sh"
 
 shell-aws: $(ASSUME_REQUIRED)
 	docker-compose -f docker-compose.yml \
