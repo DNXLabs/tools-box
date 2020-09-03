@@ -71,7 +71,7 @@ The scripts will collect the value from the SSM parameter and replace in the tem
 5. To collect the variables and replace them in the template file just run the command:
 
 ```
-replace-ssm-variables
+make replace-ssm-variables
 ```
 
 The first script collects the environment variables and stores in the file `.env.ssm` and the second script replaces these variables in the template file `example.tpl.json` resulting in the output of `example.json`.
