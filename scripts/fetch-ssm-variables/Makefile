@@ -30,7 +30,7 @@ env-%:
 	docker-compose -f docker-compose.yml pull aws
 	docker-compose -f docker-compose.yml run --rm aws assume-role.sh > .env.assume
 
-fetch-ssm: $(ASSUME_REQUIRED) env-AWS_ENV
+replace-ssm-variables: $(ASSUME_REQUIRED) env-AWS_ENV
 	docker-compose -f docker-compose.yml \
 		run --rm aws \
 			"ssm-fetch.sh $(SSM_PATH) && \

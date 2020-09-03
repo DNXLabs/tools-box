@@ -28,9 +28,9 @@ export GOOGLE_SP_ID=<my-google-sp-id>
 
 2. Export the following environment variables for the desired AWS account where we must collect the SSM parameters:
 
-- AWS_ACCOUNT_ID = Account ID
-- AWS_ROLE       = IAM role
-- AWS_ENV        = Environment
+- AWS_ACCOUNT_ID = AWS Account ID
+- AWS_ROLE       = AWS IAM role
+- AWS_ENV        = AWS Environment
 
 ```
 export AWS_ACCOUNT_ID=<my-account-id> AWS_ROLE=<my-iam-role> AWS_ENV=<my-environment>
@@ -39,7 +39,7 @@ export AWS_ACCOUNT_ID=<my-account-id> AWS_ROLE=<my-iam-role> AWS_ENV=<my-environ
 3. Adjust the SSM_PATH variable in the `Makefile` based on your configuration and the variables in the template file (e.g. `example.tpl.json`) based on the last part of the path of your SSM parameter. For example, if your SSM variable has this path:
 
 ```
-/app/my-aws-environment/my-app/MY_VARIABLE
+/app/my-environment/my-app/MY_VARIABLE
 ```
 
 You should configure your `Makefile` with:
@@ -67,6 +67,12 @@ The scripts will collect the value from the SSM parameter and replace in the tem
 ```
 ./ssm-fetch.sh
 ./ssm-envsubst.sh
+```
+
+or the command:
+
+```
+replace-ssm-variables
 ```
 
 The first script collects the environment variables and stores in the file `.env.ssm` and the second script replaces these variables in the template file `example.tpl.json` resulting in the output of `example.json`.
