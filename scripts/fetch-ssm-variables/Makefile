@@ -33,8 +33,7 @@ env-%:
 replace-ssm-variables: $(ASSUME_REQUIRED) env-AWS_ENV
 	docker-compose -f docker-compose.yml \
 		run --rm aws \
-			"./ssm-fetch.sh $(SSM_PATH) && \
-			 ./ssm-envsubst.sh"
+			"./ssm-fetch.sh $(SSM_PATH)"
 
 shell-aws: $(ASSUME_REQUIRED)
 	docker-compose -f docker-compose.yml \

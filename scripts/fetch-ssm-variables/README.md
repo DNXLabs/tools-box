@@ -34,12 +34,13 @@ make .env.auth
 
 2. Export the following environment variables for the desired AWS account where we must collect the SSM parameters:
 
-- `AWS_ACCOUNT_ID` = AWS Account ID
-- `AWS_ROLE`       = AWS IAM role
-- `AWS_ENV`        = AWS Environment
+- `AWS_ACCOUNT_ID`      = AWS Account ID
+- `AWS_ROLE`            = AWS IAM role
+- `AWS_ENV`             = AWS Environment
+- `AWS_DEFAULT_REGION`  = AWS Region (e.g. `ap-southeast-2`)
 
 ```
-export AWS_ACCOUNT_ID=<my-account-id> AWS_ROLE=<my-iam-role> AWS_ENV=<my-environment>
+export AWS_ACCOUNT_ID=<my-account-id> AWS_ROLE=<my-iam-role> AWS_ENV=<my-environment> AWS_DEFAULT_REGION=<my-region>
 ```
 
 3. Adjust the SSM_PATH variable in the `Makefile` based on your configuration and the variables in the template file (e.g. `example.tpl.json`) based on the last part of the path of your SSM parameter. For example, if your SSM variable has this path:
