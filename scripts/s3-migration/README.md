@@ -35,11 +35,11 @@ Run the script:
 
 ### Recommendation
 
-1. Spin up an EC2 instance
-2. Create an instance role and attach it to the EC2 Instance
-3. Update the policy of source buckets with the new instance role
-4. Install screen
-5. Run this script on screen
+1. Create instance role with s3 admin and SSM policy (target account)
+2. Spin up EC2 instance on the target account with SSM agent and attach the instance role that was created on the previous step
+3. Update the source bucket policy (origin account) to allow access to the instance role created on the target account
+4. Run the sync script using screen
+5. Clean up role, policy, and ec2 instance created for the s3 migration purpose
 
 ## Built With
 
