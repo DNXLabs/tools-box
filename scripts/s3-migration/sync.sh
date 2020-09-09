@@ -3,13 +3,14 @@ OLDIFS=$IFS
 IFS=","
 
 mkdir -p outputs
-i=1
 while read -r sourcebucket targetbucket
   do
-        echo "Starting copy from \"$sourcebucket\" to \"$targetbucket\""
-        aws s3 ls --recursive s3://"$sourcebucket" --human-readable --summarize > outputs/"$i"-SourceBucket-"$sourcebucket".txt
+        echo "STARTED - copy from \"$sourcebucket\" to \"$targetbucket\""
         date; aws s3 sync s3://"$sourcebucket" s3://"$targetbucket" ;date
-        aws s3 ls --recursive s3://"$targetbucket" --human-readable --summarize > outputs/"$i"-TargetBucket-"$targetbucket".txt
-        ((++i))
+        aws s3 ls s3://"$sourcebucket" --recursive --human-readable --summarize | awk '{print $5,$3,$4}' > outputs/"$sourcebucket"        
+        aws s3 ls s3://"$targetbucket" --recursive --human-readable --summarize | awk '{print $5,$3,$4}' > outputs/"$targetbucket"
+        diff -u outputs/"$sourcebucket" outputs/"$targetbucket" | grep ^-[a-zA-Z0-9] > outputs/diff-"$sourcebucket"-"$targetbucket"
+        echo "COMPLETED - copy from \"$sourcebucket\" to \"$targetbucket\""
+        echo ""
 done < "$1"
 IFS=$OLDIFS
