@@ -1,0 +1,23 @@
+version: "3.4"
+
+services:
+  google-auth:
+    image: dnxsolutions/aws-google-auth
+    env_file: .env
+    volumes:
+      - ./.env.auth:/work/.env
+    environment:
+      - GOOGLE_IDP_ID
+      - GOOGLE_SP_ID
+      - GOOGLE_USERNAME
+
+  aws:
+    image: dnxsolutions/aws:2.0.22-dnx1
+    entrypoint: "/bin/bash -c"
+    working_dir: /work
+    env_file:
+      - .env
+      - .env.auth
+      - .env.assume
+    volumes:
+      - .:/work
