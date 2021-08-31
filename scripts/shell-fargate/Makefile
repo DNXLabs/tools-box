@@ -4,8 +4,8 @@ export AZURE_TENANT_ID?=PLACEHOLDER			# Update if using azure-ad instead of goog
 export AZURE_APP_ID_URI?=PLACEHOLDER		# Update if using azure-ad instead of google
 
 export AWS_DEFAULT_REGION?=ap-southeast-2
-CLUSTER=							# Update parameters for container access
-TASK=								# Update parameters for container access
+CLUSTER?=							# Update parameters for container access
+TASK?=								# Update parameters for container access
 
 GOOGLE_AUTH_IMAGE=public.ecr.aws/dnxsolutions/aws-google-auth:latest
 AZURE_AUTH_IMAGE=public.ecr.aws/dnxsolutions/docker-aws-azure-ad:latest
