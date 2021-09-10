@@ -72,7 +72,7 @@ for val in ${StringArray[@]}; do
     git add .
     git commit -m $COMMIT_MESSAGE
     git push origin feature/$BRANCH_NAME
-    gh pr create --title $PR_TITLE --body $PR_BODY
+    gh pr create -R DNXLabs/$val --title $PR_TITLE --body $PR_BODY
 
     cd ..
 
