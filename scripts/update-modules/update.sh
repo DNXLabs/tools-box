@@ -2,20 +2,22 @@
 
 
 # List of modules to update
-# Be carefull with fork repos, to point the right origin when openinig PR.
+# Be carefull with fork repos to point the right origin when openinig PR.
+# DNX One public repositories list
+# To get an updated list of dnx publix repositores, use the github cli command: gh repo list DNXLabs --public
 declare -a StringArray=(
-    #"terraform-aws-ecs-app"
-    # "terraform-aws-ecs-app-front"
-    #"terraform-aws-ecs-app-nlb"
-    #"terraform-aws-ecs-app-worker"
-    #"terraform-aws-ecs-app-scheduler"
-
+    "terraform-aws-ecs-app"
+    "terraform-aws-ecs-app-front"
+    "terraform-aws-ecs-app-nlb"
+    "terraform-aws-ecs-app-worker"
+    "terraform-aws-ecs-app-scheduler"
+    "terraform-aws-rds"
     "terraform-aws-network"
     "terraform-aws-gitlab-runner" # fork
     "terraform-aws-jenkins" # fork
-    "terraform-aws-backup",
-    "terraform-aws-chatbot",
-    "terraform-aws-kinesis-stream-es",
+    "terraform-aws-backup"
+    "terraform-aws-chatbot"
+    "terraform-aws-kinesis-stream-es"
     "terraform-aws-ecs"
     "terraform-aws-client-vpn"
     "terraform-aws-account"
@@ -26,7 +28,6 @@ declare -a StringArray=(
     "terraform-aws-backend"
     "terraform-aws-static-app"
     "terraform-aws-vpc-peering"
-    "terraform-aws-jenkins"
     "terraform-aws-billing"
     "terraform-aws-billing-role"
     "terraform-aws-organization"
@@ -48,83 +49,69 @@ declare -a StringArray=(
     "terraform-aws-eb-windows"
     "terraform-aws-eks"
     "terraform-aws-template"
-
-    "terraform-aws-eks-argocd",
-    "terraform-aws-media-convert",
-    "terraform-aws-github-runner",
-    "terraform-aws-eks-node-termination-handler",
-    "terraform-aws-eks-ack",
-    "terraform-aws-transfer-server",
-    "terraform-aws-eks-calico",
-    "terraform-aws-rds",
-    "terraform-aws-couchbase",
-    "terraform-aws-audit-regional",
-    "terraform-aws-eks-external-dns",
-    "terraform-aws-eventbridge-default",
-    "terraform-aws-security-alarms",
-    "terraform-aws-eks-cloudwatch-logs",
-    "terraform-aws-eks-vpc-cni",
-    "terraform-aws-securityhub",
-    "terraform-aws-eks-external-secrets",
-    "terraform-aws-eks-grafana-prometheus",
-    "terraform-aws-stateful",
-    "terraform-aws-acm-certificate",
-    "terraform-mongodbatlas-vpc-peering",
-    "terraform-aws-eks-istio-operator",
-    "terraform-aws-vpc-peering-inter-region",
-    "terraform-aws-eks-dashboard",
-    "terraform-aws-eks-kiali-operator",
-    "terraform-aws-redis",
-    "terraform-aws-eks-github-runner",
-    "terraform-aws-eks-metrics-server",
-    "terraform-aws-eks-old",
-    "terraform-azure-devops-self-hosted-agent-on-aws",
-    "terraform-aws-lambda-edge-function",
-    "terraform-aws-eks-velero",
-    "terraform-aws-eks-cert-manager",
-    "terraform-docs",
-    "terraform-aws-budget",
-    "terraform-aws-mwaa",
-    "terraform-aws-eks-efs-csi-driver",
-    "terraform-aws-sagemaker",
-    "terraform-aws-eks-cloudwatch-metrics",
-    "terraform-aws-eks-lb-controller",
-    "terraform-aws-maskopy",
-    "terraform-aws-inspector",
-    "terraform-aws-eks-cluster-autoscaler",
+    "terraform-aws-eks-argocd"
+    "terraform-aws-media-convert"
+    "terraform-aws-github-runner"
+    "terraform-aws-eks-node-termination-handler"
+    "terraform-aws-eks-ack"
+    "terraform-aws-transfer-server"
+    "terraform-aws-eks-calico"
+    "terraform-aws-couchbase"
+    "terraform-aws-audit-regional"
+    "terraform-aws-eks-external-dns"
+    "terraform-aws-eventbridge-default"
+    "terraform-aws-security-alarms"
+    "terraform-aws-eks-cloudwatch-logs"
+    "terraform-aws-eks-vpc-cni"
+    "terraform-aws-securityhub"
+    "terraform-aws-eks-external-secrets"
+    "terraform-aws-eks-grafana-prometheus"
+    "terraform-aws-stateful"
+    "terraform-aws-acm-certificate"
+    "terraform-mongodbatlas-vpc-peering"
+    "terraform-aws-eks-istio-operator"
+    "terraform-aws-vpc-peering-inter-region"
+    "terraform-aws-eks-dashboard"
+    "terraform-aws-eks-kiali-operator"
+    "terraform-aws-redis"
+    "terraform-aws-eks-github-runner"
+    "terraform-aws-eks-metrics-server"
+    "terraform-azure-devops-self-hosted-agent-on-aws"
+    "terraform-aws-lambda-edge-function"
+    "terraform-aws-eks-velero"
+    "terraform-aws-eks-cert-manager"
+    "terraform-docs"
+    "terraform-aws-budget"
+    "terraform-aws-mwaa"
+    "terraform-aws-eks-efs-csi-driver"
+    "terraform-aws-sagemaker"
+    "terraform-aws-eks-cloudwatch-metrics"
+    "terraform-aws-eks-lb-controller"
+    "terraform-aws-maskopy"
+    "terraform-aws-inspector"
+    "terraform-aws-eks-cluster-autoscaler"
     "terraform-aws-bitbucket-oidc"
-
-
-
-
-
-
-
-    # "terraform-aws-audit"
 )
 
 mkdir repos
 cd repos
 
-BRANCH_NAME="project_guidelines" # e.g update-tf-versions
-COMMIT_MESSAGE="📦 NEW: Add project guidelines" # e.g Bump TF required version to 0.13
-PR_TITLE="Add project guidelines and issue/prs templates" # e.g Set minimum terraform version to 1.13
-PR_BODY="This pull request push project guidelines and templates files to improve repository community health." # Explain why you are doing this PR
+BRANCH_NAME="" # e.g update-tf-versions
+COMMIT_MESSAGE="" # e.g Bump TF required version to 0.13
+PR_TITLE="" # e.g Set minimum terraform version to 1.13
+PR_BODY="" # Explain why you are doing this PR
 
 for val in ${StringArray[@]}; do
     # git clone git@github.com:$val.git
     # gh repo clone $val
     git clone https://github.com/DNXLabs/$val.git
 
-    echo git clone git@github.com:$val.git
-    echo gh repo clone $val
-    echo $val
     cd $val
 
     # Remove original file from upstream
     # rm versions.tf
 
-    # New file to replace the old one
+    # Add new files
     cp ../../modifications/CODE_OF_CONDUCT.md ./
     cp ../../modifications/CONTRIBUTING.md ./
     cp ../../modifications/.github/pull_request_template.md ./.github/
@@ -140,4 +127,8 @@ for val in ${StringArray[@]}; do
     cd ..
 
     read -p "Press enter to continue"
+
+cd ..
+rm -rf ./repos
+
 done
