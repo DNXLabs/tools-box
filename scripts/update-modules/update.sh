@@ -102,20 +102,18 @@ PR_TITLE="" # e.g Set minimum terraform version to 1.13
 PR_BODY="" # Explain why you are doing this PR
 
 for val in ${StringArray[@]}; do
-    # git clone git@github.com:$val.git
-    # gh repo clone $val
-    git clone https://github.com/DNXLabs/$val.git
+    git clone git@github.com:$val.git
+    gh repo clone $val
+    #git clone https://github.com/DNXLabs/$val.git
 
     cd $val
 
     # Remove original file from upstream
-    # rm versions.tf
+    rm versions.tf
 
     # Add new files
-    cp ../../modifications/CODE_OF_CONDUCT.md ./
-    cp ../../modifications/CONTRIBUTING.md ./
-    cp ../../modifications/.github/pull_request_template.md ./.github/
-    cp -r ../../modifications/.github/ISSUE_TEMPLATE ./.github/
+    cp ../../modifications/versions.tf .
+
 
 
     git checkout -b feature/$BRANCH_NAME
