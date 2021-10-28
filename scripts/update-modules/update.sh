@@ -93,40 +93,41 @@ declare -a StringArray=(
     "terraform-aws-bitbucket-oidc"
 )
 
+
 mkdir repos
 cd repos
 
-BRANCH_NAME="" # e.g update-tf-versions
-COMMIT_MESSAGE="" # e.g Bump TF required version to 0.13
-PR_TITLE="" # e.g Set minimum terraform version to 1.13
-PR_BODY="" # Explain why you are doing this PR
+BRANCH_NAME="fix/terraform-docs" # e.g update-tf-versions
+COMMIT_MESSAGE="🐛 FIX: Terraform docs CI" # e.g Bump TF required version to 0.13
+PR_TITLE="🐛 FIX: Terraform docs CI" # e.g Set minimum terraform version to 1.13
+PR_BODY="This pull request fixes the terraform docs automation, modifying the file docs.yml to run on any pull request." # Explain why you are doing this PR
 
 for val in ${StringArray[@]}; do
-    git clone git@github.com:$val.git
-    gh repo clone $val
-    #git clone https://github.com/DNXLabs/$val.git
+    # git clone git@github.com:$val.git
+    # gh repo clone $val
+    git clone https://github.com/DNXLabs/$val.git
 
     cd $val
 
-    # Remove original file from upstream
-    rm versions.tf
+    ## Path's of the files to be compared
+    file1="../../modifications/docs.yml"
+    file2=".github/workflows/docs.yml"
 
-    # Add new files
-    cp ../../modifications/versions.tf .
+    if cmp -s -- "$file1" "$file2"; then
+        echo "$file1 and $file2 have identical contents"
+    else
+        echo "the differences between the files have been listed"
+        # Add new files
+        cp ../../modifications/docs.yml ./.github/workflows/
 
-
-
-    git checkout -b feature/$BRANCH_NAME
-    git add .
-    git commit -m "$COMMIT_MESSAGE"
-    git push origin feature/"$BRANCH_NAME"
-    gh pr create -R DNXLabs/$val --title "$PR_TITLE" --body "$PR_BODY"
-
+        # Create a target branch, commit modifications, push-it and open a Pull request.
+        git checkout -b $BRANCH_NAME
+        git add .
+        git commit -m "$COMMIT_MESSAGE"
+        git push origin "$BRANCH_NAME"
+        gh pr create -R DNXLabs/$val --title "$PR_TITLE" --body "$PR_BODY"
+    fi
     cd ..
 
     read -p "Press enter to continue"
-
-cd ..
-rm -rf ./repos
-
 done
