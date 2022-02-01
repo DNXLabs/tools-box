@@ -5,7 +5,9 @@ Script to delete the default VPC from **all regions** in an AWS Account.
 ## Prerequisites
 
 - Bash
+- AWS CLI
 - Valid AWS Credentials
+
 
 ## How to run
 
