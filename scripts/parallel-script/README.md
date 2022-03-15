@@ -32,6 +32,11 @@ These scripts will help you to start a multi thread processment either for `aws 
         file2
         file3
         ```
+        💡 You can use the AWS CLI to create your list of files, here is how to do it:
+
+        ```
+        aws s3 ls s3://ORIGIN_BUCKET --recursive | awk '{$1=$2=$3=""; print $0}' | sed 's/^[ \t]*//' > my_files_list.txt & tail -F my_files_list.txt
+        ```
 
 - main()
     - pool = the number of threads running at the same time
