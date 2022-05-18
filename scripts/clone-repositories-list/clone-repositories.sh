@@ -25,7 +25,7 @@ for PACKAGE in "${repos[@]}"; do
             echo "Repository $repoName already exists locally." 
         else
             echo "Cloning git@$VCS_URL:$ORG_NAME/$repoName.git..."
-            git clone -b $repoVersion git@$VCS_URL:$ORG_NAME/$repoName.git ./private-repositories/$repoName
+            git clone -b $repoVersion git@$VCS_URL:$ORG_NAME/$repoName.git ./local-repositories/$repoName
     fi
 done   
 
