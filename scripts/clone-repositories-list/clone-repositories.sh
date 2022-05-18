@@ -2,12 +2,12 @@
 
 #Checking if necessary environment variables are set
 if [[ -z "${ORG_NAME}" ]] ; then
-  echo "ORG_NAME environment variable is not set"
+  echo "ORG_NAME environment variable is not set, this variable is used to compose the repository URL"
   exit
 fi
 
 if [[ -z "${VCS_URL}" ]] ; then
-  echo "VCS_URL environment variable is not set"
+  echo "VCS_URL environment variable is not set, this variable is used to compose the repository URL"
   exit
 fi
 

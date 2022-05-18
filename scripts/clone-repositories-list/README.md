@@ -20,8 +20,8 @@ _Examples:_
 ## How to run
 
 - Export the required environment variables:
-    - `ORG_NAME` = Organization name eg:. `export ORG_NAME=DNXLabs`
-    - `VCS_URL` = Version control system eg:. `export VCS_URL=github.com`
+    - `ORG_NAME` = Organization name, this variable is used to compose the repository URL e.g.: `export ORG_NAME=DNXLabs`
+    - `VCS_URL` = Version control system, this variable is used to compose the repository URL e.g.: `export VCS_URL=github.com`
 - From the command line run: `bash clone-repositories.sh "repo-1@1.0.1" repo-2@1.2.1" "repo-3@2.0.3"`
 
 ## Versioning
