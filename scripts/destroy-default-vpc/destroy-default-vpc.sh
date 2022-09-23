@@ -11,7 +11,7 @@ for region in $REGIONS; do
 done
 
 # Ask if you are sure to delete the resources
-read -p "Are you sure? " -n 1 -r
+read -p "Are you sure? " -n 1 -r ANSWER
 echo
 if [[ $ANSWER =~ ^[Yy]$ ]]
 then
