@@ -1,0 +1,21 @@
+{
+    "FunctionName": "dev-poc-migration-cognito",
+    "Runtime": "nodejs16.x",
+    "Role": "arn:aws:iam::026347360354:role/cognito-migration-lambda-dev",
+    "Handler": "index.handler",
+    "Code": {
+        "ZipFile": "fileb://migrate-cognito-user-pool.zip"
+    },
+    "Description": "Migrate users from an Older Cognito to Newer Cognito",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "Publish": true,
+    "Environment": {
+        "Variables": {
+            "OLD_CLIENT_ID": "<OLD_CLIENT_ID>",
+            "OLD_USER_POOL_ID": "<OLD_USER_POOL_ID>",
+            "OLD_USER_POOL_REGION": "<AWS_REGION>"
+        }
+    }
+    
+}
