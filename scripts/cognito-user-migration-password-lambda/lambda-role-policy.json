@@ -8,7 +8,7 @@
                 "cognito-idp:AdminInitiateAuth",
                 "cognito-idp:AdminGetUser"
             ],
-            "Resource": "arn:aws:iam::026347360354:role/cognito-migration-lambda-dev"
+            "Resource": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/<ROLE_NAME>"
         }
     ]
 }

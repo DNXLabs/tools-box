@@ -12,9 +12,9 @@
     "Publish": true,
     "Environment": {
         "Variables": {
-            "OLD_CLIENT_ID": "38v9pv1vkk158fso0d40esscl4",
-            "OLD_USER_POOL_ID": "ap-southeast-2_L2hOiXYYE",
-            "OLD_USER_POOL_REGION": "ap-southeast-2"
+            "OLD_CLIENT_ID": "<OLD_CLIENT_ID>",
+            "OLD_USER_POOL_ID": "<OLD_USER_POOL_ID>",
+            "OLD_USER_POOL_REGION": "<AWS_REGION>"
         }
     }
     
