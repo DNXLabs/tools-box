@@ -1,0 +1,17 @@
+{
+	"name": "migrate-cognito-user-pool-lambda",
+	"version": "0.1.0",
+	"description": "AWS Lambda to migrate users from one Cognito user pool to another",
+	"scripts": {
+		"build": "tsc && (cd dist/ && zip -r ../migrate-cognito-user-pool.zip *)"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.3"
+	},
+	"license": "Apache-2.0",
+	"dependencies": {
+		"@types/aws-lambda": "^8.10.46",
+		"@types/node": "^12.12.15",
+		"aws-sdk": "^2.585.0"
+	}
+}
