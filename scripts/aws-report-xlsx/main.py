@@ -114,9 +114,9 @@ def get_dynamodb_tables(region):
 def fetch_and_export(resource_fn, resource_type, region):
     try:
         export_resource_to_csv(resource_fn(region), resource_type, region)
-        print(f"{resource_type} ({region}) exportado com sucesso!")
+        print(f"{resource_type} ({region}) exported successfully!")
     except Exception as e:
-        print(f"Erro exportando {resource_type} ({region}): {e}")
+        print(f"Error exporting {resource_type} ({region}): {e}")
 
 resource_map = [
     (get_ec2_instances, "ec2"),
@@ -154,14 +154,14 @@ with pd.ExcelWriter('aws_resources_full.xlsx') as writer:
                     if not df.empty:
                         dfs.append(df)
                 except pd.errors.EmptyDataError:
-                    print(f"Aviso: {file} está vazio e foi ignorado.")
+                    print(f"Warning: {file} is empty and was ignored.")
             else:
-                print(f"Aviso: {file} está vazio e foi ignorado.")
+                print(f"Warning: {file} is empty and was ignored.")
         if dfs:
             df_final = pd.concat(dfs, ignore_index=True)
             df_final.to_excel(writer, sheet_name=resource_type.upper(), index=False)
 
-print('Exportação completa! Arquivo: aws_resources_full.xlsx')
+print('Export complete! File: aws_resources_full.xlsx')
 
 
 def try_read_concat(pattern):
@@ -253,12 +253,12 @@ df_consolidado = pd.concat([
 ], ignore_index=True)
 
 
-df_consolidado.to_csv('backup.xlsx', index=False)
-print('Arquivo consolidado_protecao_backup.csv criado!')
+df_consolidado.to_excel('backup.xlsx', index=False)
+print('Backup file backup.xlsx created!')
 
 for resource_type in resource_types:
     csv_files = glob.glob(f"{resource_type}_*.csv")
     for file in csv_files:
         os.remove(file)
 
-print('Arquivos temporários CSV removidos.')
+print('Temporary CSV files removed.')
