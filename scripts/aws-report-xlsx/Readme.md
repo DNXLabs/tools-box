@@ -148,10 +148,5 @@ And filter it on your query:
 ```
 
 
-## Example
-Martec Document:
-https://docs.google.com/spreadsheets/d/1tAewFnA2pAFgCTDOcPph2uCsJ1QlE6fVnl6Dt4PMFuc/edit?gid=1396156998#gid=1396156998
-
-
 ## Contributing
 You are welcome to change the code and to add new resource types, region support, or optimizations!
